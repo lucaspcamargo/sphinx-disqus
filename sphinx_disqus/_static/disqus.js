@@ -16,4 +16,6 @@ const SphinxDisqus = {
     },
 };
 
-SphinxDisqus.init();
+document.addEventListener('DOMContentLoaded', function () {SphinxDisqus.init();}, false);
+
+

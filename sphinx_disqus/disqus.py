@@ -119,7 +119,10 @@ def setup(app: Sphinx) -> Dict[str, str]:
 
     :returns: Extension version.
     """
-    app.add_config_value("disqus_shortname", None, True)
+    try:
+        app.add_config_value("disqus_shortname", None, True)
+    except ExtensionError:
+        pass
     app.add_directive("disqus", DisqusDirective)
     app.add_node(DisqusNode, html=(DisqusNode.visit, DisqusNode.depart))
     app.connect("builder-inited", lambda app_: app_.config.html_static_path.append(STATIC_DIR))

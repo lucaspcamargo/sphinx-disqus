@@ -122,6 +122,8 @@ def setup(app: Sphinx) -> Dict[str, str]:
     try:
         app.add_config_value("disqus_shortname", None, True)
     except ExtensionError:
+        import warnings
+        warnings.warn("sphinx-disqus: extension error adding config variable, skipping...")
         pass
     app.add_directive("disqus", DisqusDirective)
     app.add_node(DisqusNode, html=(DisqusNode.visit, DisqusNode.depart))
